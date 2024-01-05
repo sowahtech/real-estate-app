@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "description": "a real estate mern app",
   "main": "index.js",
-  "scripts":{
+  "scripts": {
     "dev": "nodemon api/index.js",
     "start": "node api/index.js"
   },
   "repository": "https://github.com/sowahtech/real-estate-app.git",
   "author": "sowahtech",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "mongoose": "^8.0.3"
+  }
 }
