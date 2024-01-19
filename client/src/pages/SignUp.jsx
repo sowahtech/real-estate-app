@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -16,21 +15,23 @@ function SignUp() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
     try {
+      e.preventDefault();
       setLoading(true);
       const res = await fetch("http://localhost:5000/api/auth/signup", {
         method: "POST",
         headers: {
-          "Content-type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
       const data = await res.json();
       console.log(data);
-      if (data.success === false) {
+      if (data.success === "failed") {
         setLoading(false);
         setError(data.message);
+
+        console.log(data);
         return;
       }
       setLoading(false);
@@ -41,6 +42,7 @@ function SignUp() {
       setError(error.message);
     }
   };
+
   return (
     <div className="max-w-lg mx-auto">
       <h1 className="text-3xl text-center font-semibold my-7">Sign Up</h1>
